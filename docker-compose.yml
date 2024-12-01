@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "8080:5000" # เชื่อมพอร์ต 8080 ของ Host กับพอร์ต 5000 ของคอนเทนเนอร์
+    volumes:
+      - ./app:/app
+    restart: always

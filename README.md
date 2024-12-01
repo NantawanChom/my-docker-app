@@ -153,3 +153,135 @@ docker image prune
 ```
 docker system prune
 ```
+
+
+## Docker Compose
+
+### สร้างและรันบริการ
+
+```
+docker-compose up
+```
+
+- รันในโหมดเบื้องหลัง (detached mode)
+
+```
+docker-compose up -d
+```
+
+### หยุดบริการ
+
+```
+docker-compose stop
+```
+
+### ลบบริการ (รวมถึงคอนเทนเนอร์, เน็ตเวิร์ก และ volumes)
+
+```
+docker-compose down
+```
+
+- ลบ volumes ที่สร้างขึ้นด้วย
+```
+docker-compose down --volumes
+```
+
+### ดูสถานะบริการ
+
+```
+docker-compose ps
+```
+
+### ตรวจสอบ logs ของบริการ
+
+```
+docker-compose logs
+```
+
+- ตรวจสอบ logs ของบริการใดบริการหนึ่ง
+
+```
+docker-compose logs <service_name>
+```
+
+- ใช้ -f เพื่อติดตาม logs แบบเรียลไทม์
+
+```
+docker-compose logs -f
+```
+
+### รันคำสั่งในคอนเทนเนอร์
+
+```
+docker-compose exec <service_name> <command>
+```
+
+###  รีสตาร์ทบริการ
+
+```
+docker-compose restart
+```
+
+- รีสตาร์ทบริการเฉพาะ
+
+```
+docker-compose restart <service_name>
+```
+
+### คำสั่งสำหรับการ Build
+### สร้างอิมเมจใหม่
+
+```
+docker-compose build
+```
+
+- ใช้ --no-cache เพื่อบังคับสร้างใหม่โดยไม่ใช้แคช
+
+```
+docker-compose build --no-cache
+```
+
+### ดึงอิมเมจจาก Docker Hub
+
+```
+docker-compose pull
+```
+
+### ลบอิมเมจที่ไม่ใช้
+
+```
+docker-compose down --rmi all
+```
+
+### เพิ่มจำนวนคอนเทนเนอร์ที่รันสำหรับบริการใดบริการหนึ่ง
+
+```
+docker-compose up --scale <service_name>=<num>
+
+Ex.
+docker-compose up --scale redis=3
+```
+
+### ตรวจสอบสถานะเครือข่าย
+
+```
+docker network ls
+```
+
+- ตรวจสอบเครือข่ายที่สร้างโดย Docker Compose
+
+```
+docker-compose config --services
+```
+
+### ตรวจสอบไฟล์ Compose
+
+```
+docker-compose config
+```
+
+### ลบข้อมูลทั้งหมด
+
+```
+docker-compose down --volumes --remove-orphans
+```
